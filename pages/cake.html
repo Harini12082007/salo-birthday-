@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffdae8, #ff9fbd, #ffc7dc);
+    font-family: Georgia, serif;
+    text-align: center;
+    color: #c2185b;
+}
+
+.container {
+    padding: 30px 12px;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+.cake-area {
+    position: relative;
+    width: 300px;
+    max-width: 95vw;
+    height: 270px;
+    margin: 30px auto 10px;
+}
+
+.plate {
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    width: 90%;
+    height: 25px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 5px 12px #d66b91;
+}
+
+.cake {
+    position: absolute;
+    bottom: 30px;
+    left: 12%;
+    width: 76%;
+    height: 130px;
+    background: linear-gradient(
+        to bottom,
+        #fff0f6 0 15%,
+        #ff9fc3 15% 30%,
+        #fff0f6 30% 38%,
+        #ff9fc3 38% 85%,
+        #ffdfec 85%
+    );
+    border-radius: 15px 15px 25px 25px;
+    box-shadow: inset 0 -8px 10px #e47da5;
+    transition: transform 1s;
+}
+
+.cake::before {
+    content: "🍓 💗 🍓";
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    font-size: 23px;
+}
+
+.candles {
+    position: absolute;
+    bottom: 155px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    z-index: 2;
+}
+
+.candle {
+    width: 12px;
+    height: 50px;
+    background: repeating-linear-gradient(
+        45deg,
+        white 0 5px,
+        #ff4081 5px 10px
+    );
+    position: relative;
+    border-radius: 3px;
+}
+
+.flame {
+    position: absolute;
+    top: -22px;
+    left: 1px;
+    width: 10px;
+    height: 18px;
+    background: orange;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 15px orange;
+    animation: flicker 0.5s infinite alternate;
+}
+
+@keyframes flicker {
+    to {
+        transform: rotate(-40deg) scale(0.8);
+    }
+}
+
+button {
+    background: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px #df83a6;
+}
+
+#cutButton,
+#finalButton {
+    display: none;
+}
+
+#status {
+    font-size: 18px;
+    min-height: 45px;
+}
+
+.cutting {
+    animation: cutCake 1s forwards;
+}
+
+@keyframes cutCake {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10px) rotate(-3deg);
+    }
+    100% {
+        transform: translateX(-22px) rotate(-5deg);
+    }
+}
+
+.heart {
+    position: fixed;
+    top: -30px;
+    animation: fall 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Happy Birthday! ❤️</h1>
+    <p>A special day for my special person 💗</p>
+
+    <div class="cake-area">
+
+        <div class="candles" id="candles">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+        </div>
+
+        <div class="plate"></div>
+        <div class="cake" id="cake"></div>
+
+    </div>
+
+    <p id="status">Make a wish, Bujji Kutty! 🥹💖</p>
+
+    <button id="blowButton" onclick="blowCandles()">
+        Blow the Candle 🕯️
+    </button>
+
+    <button id="cutButton" onclick="cutCake()">
+        Cut the Cake 🎂
+    </button>
+
+    <button id="finalButton" onclick="openFinal()">
+        Open Final Surprise 💌
+    </button>
+
+</div>
+
+<script>
+let blown = false;
+let cut = false;
+
+function blowCandles() {
+    if (blown) return;
+
+    blown = true;
+
+    document.querySelectorAll(".flame").forEach(function(flame) {
+        flame.style.display = "none";
+    });
+
+    document.getElementById("status").innerHTML =
+        "Yayyy! 🥳 Candles blown! Now cut your cake! 💗";
+
+    document.getElementById("blowButton").style.display = "none";
+    document.getElementById("cutButton").style.display = "inline-block";
+
+    celebrate();
+}
+
+function cutCake() {
+    if (!blown || cut) return;
+
+    cut = true;
+
+    const cake = document.getElementById("cake");
+
+    cake.classList.add("cutting");
+
+    document.getElementById("status").innerHTML =
+        "Cutting your birthday cake! 🎂❤️";
+
+    setTimeout(function() {
+        cake.style.clipPath =
+            "polygon(0 0, 48% 0, 48% 100%, 0 100%)";
+
+        cake.style.transform = "translateX(-22px) rotate(-5deg)";
+
+        document.getElementById("status").innerHTML =
+            "Yayyy! Cake cut panniyachu! 🎉💗";
+
+        document.getElementById("cutButton").style.display = "none";
+        document.getElementById("finalButton").style.display = "inline-block";
+
+        celebrate();
+    }, 1000);
+}
+
+function celebrate() {
+    for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = ["💗", "❤️", "💕", "🎉"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDelay = Math.random() + "s";
+        heart.style.fontSize = "25px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+            heart.remove();
+        }, 4000);
+    }
+}
+
+function openFinal() {
+    window.location.href = "final.html";
+}
+</script>
+<audio id="bgMusic" loop>
+    <source src="../music/bgmusic.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()" 
+style="position:fixed; bottom:20px; right:20px;
+padding:12px 18px; border:none; border-radius:25px;
+background:#ff69b4; color:white; font-size:16px;
+z-index:9999;">
+🎵 Play Music 💗
+</button>
+
+<script>
+function playMusic() {
+    const music = document.getElementById("bgMusic");
+    music.play();
+    sessionStorage.setItem("musicPlaying", "true");
+}
+</script>
+</body>
+</html>
