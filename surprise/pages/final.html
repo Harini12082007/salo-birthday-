@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Pattu Kutty ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffafcc, #ffe4ef);
+    color: #a41352;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 35px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: clamp(27px, 6vw, 40px);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.envelope {
+    position: relative;
+    width: 260px;
+    height: 175px;
+    margin: 45px auto 25px;
+    background: #ff6f9f;
+    border-radius: 10px;
+    box-shadow: 0 12px 25px #d66a94;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 100px solid #ff8fb5;
+    z-index: 2;
+    transform-origin: top;
+    transition: transform 0.8s;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.letter-icon {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    font-size: 70px;
+    z-index: 1;
+}
+
+.heart-seal {
+    position: absolute;
+    top: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: 35px;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 26px;
+    background: linear-gradient(135deg, #ff2878, #c90050);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    box-shadow: 0 6px 15px #d8759b;
+    cursor: pointer;
+    margin: 12px;
+}
+
+button:hover {
+    transform: scale(1.04);
+}
+
+#letter {
+    display: none;
+    width: 100%;
+    max-width: 650px;
+    padding: 28px 22px;
+    margin: 25px auto;
+    background: #fffafc;
+    border: 2px solid #ffc0d7;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px #d66a9455;
+    text-align: left;
+    animation: appear 1s ease;
+}
+
+#letter h2 {
+    text-align: center;
+    color: #d41460;
+    font-size: 26px;
+}
+
+#letterText {
+    font-size: 17px;
+    line-height: 2;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.signature {
+    text-align: center;
+    font-size: 23px;
+    color: #d41460;
+    margin-top: 25px;
+}
+
+#openButton {
+    display: inline-block;
+}
+
+#finalMessage {
+    display: none;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.heart {
+    position: fixed;
+    top: -35px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fall 5s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope {
+        width: 230px;
+        height: 155px;
+    }
+
+    .envelope::before {
+        border-left-width: 115px;
+        border-right-width: 115px;
+        border-top-width: 85px;
+    }
+
+    #letter {
+        padding: 22px 16px;
+    }
+
+    #letterText {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>One Last Surprise 💌❤️</h1>
+
+    <p class="subtitle">
+        For my favourite person in this whole world 🥹💕<br>
+        I have something special to tell you...
+    </p>
+
+    <div class="envelope" id="envelope">
+        <div class="letter-icon">💌</div>
+        <div class="heart-seal">❤️</div>
+    </div>
+
+    <button id="openButton" onclick="openLetter()">
+        Open My Letter 💖
+    </button>
+
+    <div id="letter">
+
+        <h2>To My Pattu Kutty ❤️🫂</h2>
+
+        <div id="letterText">Nan romba kolapathula irruntha orru nerathula en life la vanthu enna kapathuna oru person nee. nee en life vanthathula irrunthu nan romba romba happy ya mattum than irruken ithey mati eppaiyum ya kuda irru🫂 enna vittu engaiyum pogadha nan un kuda than irrupen eppaiyum nee bayapda venaa nan irrupen unna nalla pathupen unnaku thevaiya anbu Pasam ellamey unnaku alavuku meeri tharuven unna eppaiyum kashtapadutha matten thango Wishing you many more happy returns of the day pattu kutty ne aasa paduradhu la kandipa nadakum life la successful ahh irrupa edhum yosichi kadhtapadha unnaku manasu orru mari irruntha en kitta pessu nan irruku unnaku eppaiyum nan irrupen idhu mari many More birthdays namba onna celebrate pannuvom namba life la happy ya irrupom pattu Ones again Happy Birthday mutta bondaa chellam 💋</div>
+
+        <div class="signature">
+            Forever lots of love ❤️🫂
+        </div>
+
+        <div style="text-align:center;">
+            <button onclick="showFinal()">
+                One More Thing... 💗
+            </button>
+        </div>
+
+    </div>
+
+    <div id="finalMessage">
+        <h2>Happy Birthday, Pattu Kutty! 🎂❤️</h2>
+
+        <p>
+            Un dreams ellamey nijamaaganum. ✨<br>
+            Un face-la eppaiyum smile irukkanum. 🥹💗<br>
+            Innum neraya birthdays namma serndhu celebrate pannanum! 🫂
+        </p>
+
+        <h2>Once Again, Happy Birthday! 💋❤️</h2>
+    </div>
+
+</div>
+
+<script>
+function openLetter() {
+    const envelope = document.getElementById("envelope");
+    const letter = document.getElementById("letter");
+    const button = document.getElementById("openButton");
+
+    envelope.classList.add("open");
+    button.style.display = "none";
+
+    setTimeout(function() {
+        envelope.style.display = "none";
+        letter.style.display = "block";
+
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        makeHearts();
+    }, 650);
+}
+
+function showFinal() {
+    document.getElementById("finalMessage").style.display = "block";
+
+    document.getElementById("finalMessage").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    makeHearts();
+}
+
+function makeHearts() {
+    const symbols = ["❤️", "💗", "💕", "💖", "🫂", "💋"];
+
+    for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.textContent =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDelay = Math.random() * 2 + "s";
+        heart.style.fontSize = (18 + Math.random() * 20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+            heart.remove();
+        }, 7000);
+    }
+}
+</script>
+<audio id="bgMusic" loop>
+    <source src="../music/bgmusic.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()" 
+style="position:fixed; bottom:20px; right:20px;
+padding:12px 18px; border:none; border-radius:25px;
+background:#ff69b4; color:white; font-size:16px;
+z-index:9999;">
+🎵 Play Music 💗
+</button>
+
+<script>
+function playMusic() {
+    const music = document.getElementById("bgMusic");
+    music.play();
+    sessionStorage.setItem("musicPlaying", "true");
+}
+</script>
+
+</body>
+</html>
